@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Palm Valley Transportation</title>
+
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+  <!-- Bootstrap Core CSS -->
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+
+  <!-- Font Awesome Style -->
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}" />
+
+  <!-- Custom Styles -->
+  {% load static %}
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+
+<style>
+  .loader {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    height: 60px;
+}
+
+.car-loader {
+    position: relative;
+    width: 100%;
+    height: 40px;
+}
+
+.car {
+    position: absolute;
+    left: -60px;
+    width: 50px;
+    height: 30px;
+    background: #0355cc;
+    border-radius: 10px;
+    animation: carMove 2s linear infinite;
+}
+
+.car:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    width: 30px;
+    height: 15px;
+    background: #0355cc;
+    border-radius: 20px 20px 0 0;
+}
+
+.car:after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 8px;
+    width: 8px;
+    height: 8px;
+    background: #333;
+    border-radius: 50%;
+    box-shadow: 28px 0 0 #333;
+}
+
+.road {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #333;
+    animation: roadMove 0.5s linear infinite;
+}
+    .contact_section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Full-screen height */
+      background-color: #ffffff; /* Optional background color */
+    }
+
+    .contact_wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+
+    .contact_form h2 {
+      margin-bottom: 20px;
+      color: #000000;
+    }
+
+    .contact_form form {
+      width: 100%;
+    }
+
+    .contact_form input,
+    .contact_form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .contact_form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #0355cc;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .contact_form button:hover {
+      background-color: #023e9d;
+    }
+@keyframes carMove {
+    0% {
+        transform: translateX(0);
+        left: -60px;
+    }
+    100% {
+        transform: translateX(calc(100% + 60px));
+        left: -60px;
+    }
+}
+
+@keyframes roadMove {
+    0% {
+        background: linear-gradient(90deg, #333 0px, #333 49px, transparent 50px, transparent 100%);
+        background-size: 50px 100%;
+        background-position: 0 0;
+    }
+    100% {
+        background: linear-gradient(90deg, #333 0px, #333 49px, transparent 50px, transparent 100%);
+        background-size: 50px 100%;
+        background-position: -50px 0;
+    }
+}
+
+.loader-text {
+    margin-top: 20px;
+    color: #0355cc;
+    font-size: 14px;
+}
+  .calculator_section {
+    position: relative;
+    padding: 90px 0;
+    background-color: #ffffff;
+}
+
+.calculator_section::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ffffff 50%, transparent 50%);
+    z-index: 0;
+}
+
+.calculator_box {
+    position: relative;
+    background-color: #ffffff;
+    padding: 45px;
+    border-radius: 0;
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.15);
+    z-index: 1;
+}
+
+.heading_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 45px;
+}
+
+.heading_container h2 {
+    position: relative;
+    font-weight: bold;
+    margin: 0;
+}
+
+.heading_container h2::before {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 3px;
+    background: #0355cc
+    ;
+    left: 50%;
+    bottom: -15px;
+    transform: translateX(-50%);
+}
+
+.form_container {
+    margin-top: 35px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 12px;
+    color: #1f1f1f;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #e4e4e4;
+    outline: none;
+    color: #1f1f1f;
+    height: 50px;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    border-color: #0355cc;
+    box-shadow: 0 0 0 2px rgba(255, 79, 90, 0.1);
+}
+
+.submit_btn {
+    display: inline-block;
+    padding: 12px 45px;
+    background-color: #0355cc;
+    color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #0355cc;
+    transition: all 0.3s;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+.submit_btn:hover {
+    background-color: transparent;
+    color: #0355cc;
+}
+
+.book_btn {
+    background-color: #1f1f1f;
+    border-color: #1f1f1f;
+}
+
+.book_btn:hover {
+    color: #1f1f1f;
+}
+
+.result_box {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.result_box.success {
+    background-color: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+    color: #4CAF50;
+}
+
+.result_box.error {
+    background-color: rgba(255, 79, 90, 0.1);
+    border: 1px solid rgba(255, 79, 90, 0.2);
+    color: #0355cc;
+}
+
+#book-btn-container {
+    margin-top: 25px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%231f1f1f' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px;
+}
+    .feature_section {
+        padding: 60px 0;
+        background-color: #ffffff; /* Optional background color */
+    }
+
+    .feature_container {
+        display: flex;
+        justify-content: space-around; /* Spread boxes evenly */
+        align-items: flex-start;
+        flex-wrap: wrap; /* Allow wrapping for responsiveness */
+        gap: 20px;
+        text-align: center;
+    }
+
+    .box {
+        flex: 1 1 calc(30% - 20px); /* Flexible width with a max of 30% */
+        max-width: 300px; /* Ensures boxes don't grow too large */
+        padding: 20px;
+        background-color: #f9f9f9; /* Box background color */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .box:hover {
+        transform: translateY(-5px); /* Subtle hover effect */
+    }
+
+    .img-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px; /* Space below the icon */
+        height: 120px; /* Consistent height for all images */
+    }
+
+    .feature-icon {
+        width: 80px; /* Uniform width for icons */
+        height: 80px; /* Uniform height for icons */
+        object-fit: contain; /* Keep aspect ratio */
+    }
+
+    .name {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .description {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.6;
+    }
+    .slider_section {
+    position: relative;
+    background: url("{% static 'images/JaxDrone.mp4' %}") no-repeat center center/cover;
+  }
+    /* Styling for the main title (h1) */
+    .detail-box h1 {
+      font-family: 'Arial', sans-serif; /* Change the font */
+      font-size: 50px; /* Adjust the size */
+      font-weight: 7000; /* Bold weight */
+      color: #00FF00; /* Deep blue */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for better contrast */
+    }
+
+    /* Styling for the paragraph (p) */
+    .detail-box p {
+      font-family: 'Georgia', serif; /* Change the font */
+      font-size: 18px; /* Adjust the size */
+      font-weight: 400; /* Normal weight */
+      color: #000000; /* Dark gray for readability */
+      line-height: 1.8; /* Increase line spacing */
+      margin-top: 20px; /* Add spacing between the paragraph and title */
+    }
+    /* Styling for the paragraph inside .detail-box */
+    .detail-box p12 {
+        font-family: 'Arial', sans-serif; /* Change the font */
+                  font-size: 14px; /* Adjust the size */
+                  font-weight: 300; /* Normal weight */
+                  color: #FFFFFF; /* Dark gray for readability */
+                  line-height: 1.2; /* Increase line spacing */
+                  margin-top: 20px; /* Add spacing between the paragraph and title */
+        }
+  </style>
+<!-- <style>
+  .calculator_section {
+    background-color: #f8f9fa;
+    padding: 90px 0;
+  }
+
+  .calculator_box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .form_container {
+    margin-top: 30px;
+  }
+
+  .form-group {
+    margin-bottom: 25px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+  }
+
+  .form-control:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.2);
+  }
+
+  .submit_btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+  }
+
+  .submit_btn:hover {
+    background-color: #45a049;
+  }
+
+  .result_box {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    display: none;
+  }
+
+  .result_box.success {
+    background-color: #dff0d8;
+    border: 1px solid #d6e9c6;
+    color: #3c763d;
+    display: block;
+  }
+
+  .result_box.error {
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    color: #a94442;
+    display: block;
+  }
+
+  .pac-container {
+    z-index: 1051 !important;
+  }
+.description {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+  text-align: center;
+}
+.feature_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.box {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+}
+
+.img-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.feature-icon {
+    width: 100px; /* Uniform width for all icons */
+    height: 100px; /* Uniform height for all icons */
+    object-fit: contain; /* Maintain aspect ratio */
+}
+
+.name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+</style> -->
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    {% include 'header.html' with page_title="Custom Page Title" %}
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class="slider_section" style="height: 100vh; position: relative; overflow: hidden;">
+      <!-- Background Image -->
+      <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+              <source src="{% static 'images/JaxDrone.mp4' %}" type="video/mp4">
+              <!-- Fallback background image -->
+              
+            </video>
+
+      <!-- Content -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="detail-box">
+              <h1>
+                Premium Private Transportation <br>
+                Services in Florida
+              </h1>
+              <p12>
+                Reliable, luxurious, and tailored rides for your every need – airport transfers, event charters, and corporate commutes. Experience Jacksonville in comfort and style.
+              </p12>
+              <a href="#calculatorSection" class="btn btn-primary">
+                Book a Ride
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
+
+  <!-- feature section -->
+  <section class="feature_section">
+      <div class="container">
+          <div class="feature_container">
+              <!-- Safest Rides -->
+              <div class="box">
+                  <div class="img-box">
+                      <img src="{% static 'images/safest.png' %}" alt="Safest Rides" class="feature-icon" />
+                  </div>
+                  <h5 class="name">Safest Rides</h5>
+                  <p class="description">
+                      Your safety is our top priority. Our vehicles are regularly inspected, and all drivers are trained professionals to ensure you arrive at your destination securely.
+                  </p>
+              </div>
+
+              <!-- Trusted Drivers -->
+              <div class="box">
+                  <div class="img-box">
+                      <img src="{% static 'images/trusted.png' %}" alt="Trusted Drivers" class="feature-icon" />
+                  </div>
+                  <h5 class="name">Trusted Drivers</h5>
+                  <p class="description">
+                      Every driver is vetted and background-checked to provide a reliable and trustworthy experience. Sit back and enjoy your ride with peace of mind.
+                  </p>
+              </div>
+
+              <!-- Exceptional Comfort -->
+              <div class="box">
+                  <div class="img-box">
+                      <img src="{% static 'images/comfort.png' %}" alt="Exceptional Comfort" class="feature-icon" />
+                  </div>
+                  <h5 class="name">Exceptional Comfort</h5>
+                  <p class="description">
+                      Experience the luxury of modern, well-maintained vehicles with plush seating, climate control, and amenities designed for your comfort.
+                  </p>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- Background video---->
+
+  <!-- end feature section -->
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-md-6">
+          <div class="detail-box">
+            <h2>
+              About us
+            </h2>
+            <p>
+            At Palm Valley Transportation, we believe every journey should feel personal. Our mission is to provide you with a seamless and comfortable ride, whether it’s to the airport, a special event, or just around town. We’re more than just transportation – we’re a family who genuinely cares about your experience, your safety, and your time. Let us take the stress out of travel and help you reach your destination with ease and peace of mind. Your journey matters to us, because you matter to us.
+            </p>
+           
+            
+          </div>
+        </div>
+        <div class="col-lg-7 col-md-6">
+          <div class="img-box">
+              <img src="{% static 'images/headshot2.png' %}" alt="About Us Image">
+            <!-- <img src="images/about-img.jpg" alt=""> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+
+<!-- service section -->
+
+<section class="service_section layout_padding" >
+  <div class="container ">
+    <div class="heading_container heading_center">
+      <h2> Our Services </h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-4 mx-auto">
+        <div class="box" >
+          <div class="img-box">
+            <img src="{% static 'images/airplane1.png' %}" alt="Maintenance service icon">
+            <!-- <img src="images/s1.png" alt="" /> -->
+          </div>
+          <div class="detail-box">
+            <h5>
+                Airport Transfers
+            </h5>
+            <p>
+            Hassle-free, punctual, and comfortable rides to and from the airport. We ensure your journey starts and ends smoothly, with no stress about timing or logistics
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 mx-auto">
+        <div class="box " >
+          <div class="img-box">
+            <img src="{% static 'images/event.png' %}" alt="Maintenance service icon">
+            <!-- <img src="images/s2.png" alt="" /> -->
+          </div>
+          <div class="detail-box">
+            <h5>
+                Event Charters
+            </h5>
+            <p>
+            Reliable and luxurious transportation for your special events. Whether it’s a wedding, concert, or gathering, we’ll get you there in style and comfort
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 mx-auto">
+        <div class="box ">
+          <div class="img-box">
+            <img src="{% static 'images/taxi.png' %}" alt="Maintenance service icon">
+            <!-- <img src="images/s3.png" alt="" /> -->
+          </div>
+          <div class="detail-box">
+            <h5>
+                Corporate Commutes
+            </h5>
+            <p>
+            Professional and efficient transportation solutions for your business needs. Focus on what matters while we handle your daily commutes or corporate events
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-box">
+      <a href="#calculatorSection">
+        Request A Ride
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- end service section -->
+
+  <!-- professional section -->
+
+  <section class="calculator_section layout_padding" id="calculatorSection" style="background-color: #ffffff;">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>Book a ride with us</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="calculator_box">
+            <form id="distance-form">
+              {% csrf_token %}
+              <div class="form_container">
+                <div class="form-group">
+                  <label>From:</label>
+                  <input type="text" id="from" class="form-control" placeholder="Enter starting location" required>
+                </div>
+                <div class="form-group">
+                  <label>To:</label>
+                  <input type="text" id="to" class="form-control" placeholder="Enter destination" required>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Date:</label>
+                      <input type="date" id="journey-date" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label>Time:</label>
+                      <input type="time" id="journey-time" class="form-control" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="btn-box" id="calculate-btn-container">
+                  <button type="button" onclick="calculateDistance()" class="submit_btn">Calculate Distance</button>
+                </div>
+                <div class="btn-box" id="book-btn-container" style="display: none;">
+                  <button type="button" onclick="bookRide()" class="submit_btn book_btn">Book Ride Now</button>
+                </div>
+                <div class="loader" id="loader">
+                  <div class="car-loader">
+                      <div class="car"></div>
+                      <div class="road"></div>
+                  </div>
+                  <div class="loader-text">Calculating distance...</div>
+              </div>
+                <div id="result" class="result_box"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end professional section -->
+
+  
+
+  <section class="client_section ">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>What Our Clients Say</h2>
+      </div>
+      <div class="carousel-wrap layout_padding2-top">
+        <div class="owl-carousel">
+          <div class="item">
+            <div class="box">
+              <div class="client_id">
+                <div class="img-box">
+                  <img src="{% static 'images/client-1.jpg' %}" alt="Client testimonial image">
+                </div>
+                <div class="client_detail">
+                  <div class="client_info">
+                    <h6>Robert Evans</h6>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div>
+                  <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="client_text">
+                <p>
+                Trust me, this company is hands down the best out there. You won’t regret choosing their service—I guarantee it!
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box">
+              <div class="client_id">
+                <div class="img-box">
+                  <img src="{% static 'images/babynmom.jpg' %}" alt="Client testimonial image">
+                </div>
+                <div class="client_detail">
+                  <div class="client_info">
+                    <h6>Jane Smith</h6>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div>
+                  <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="client_text">
+                <p>
+                <p>
+                   As a mom traveling with my baby, I felt completely at ease using Palm Valley Transportation. The drivers were caring and professional, and the ride was smooth and safe. I couldn’t ask for a better experience!
+                </p>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box">
+              <div class="client_id">
+                <div class="img-box">
+                  <img src="{% static 'images/client-2.jpg' %}" alt="Client testimonial image">
+                </div>
+                <div class="client_detail">
+                  <div class="client_info">
+                    <h6>Michael Lee</h6>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div>
+                  <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="client_text">
+                <p>
+                I book all my rides with this service and have never had an issue. They are reliable, affordable, and even cheaper than other ride-sharing companies
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+
+  <!-- end client section -->
+
+  <section class="contact_section layout_padding">
+      <div class="container">
+        <div class="heading_container">
+          <h2>
+            Contact Us
+          </h2>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <form action="">
+              <div>
+                <input type="text" placeholder="Name" />
+              </div>
+              <div>
+                <input type="text" placeholder="Phone Number" />
+              </div>
+              <div>
+                <input type="email" placeholder="Email" />
+              </div>
+              <div>
+                <input type="text" class="message-box" placeholder="Message" />
+              </div>
+              <div class="d-flex ">
+                <button>
+                  SEND
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <div class="map_container">
+              <div class="map">
+                <div id="googleMap" style="width:100%;height:100%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- end contact section -->
+
+
+  <!-- info section -->
+  <section class="info_section ">
+    <div class="container">
+      <h4>
+        Get In Touch
+      </h4>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="info_items">
+            <div class="row">
+              <div class="col-md-4">
+                <a href="">
+                  <div class="item ">
+                    <div class="img-box ">
+                      <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                      Request Ride
+                    </p>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-4">
+                <a href="">
+                  <div class="item ">
+                    <div class="img-box ">
+                      <i class="fa fa-phone" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                    (904)982-4160
+                    </p>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-4">
+                <a href="">
+                  <div class="item ">
+                    <div class="img-box">
+                      <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                    Palmvalleytransportation@gmail.com
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="social-box">
+      <h4>
+        Follow Us
+      </h4>
+      <div class="box">
+        <a href="">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+        </a>
+        <a href="">
+          <i class="fa fa-twitter" aria-hidden="true"></i>
+        </a>
+        <a href="">
+          <i class="fa fa-youtube" aria-hidden="true"></i>
+        </a>
+        <a href="">
+          <i class="fa fa-instagram" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- end info_section -->
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayDateYear"></span> All Rights Reserved By
+        <a href="https://html.design/">Free Html Templates</a>
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <script src="js/custom.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg72jcuTbOPMp5ElU5BEQN4UecokfSgsI&libraries=places&callback=initAutocomplete"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg72jcuTbOPMp5ElU5BEQN4UecokfSgsI&callback=myMap"></script> -->
+  <!-- End Google Map -->
+
+  <script>
+   // Function to update available time slots
+function updateAvailableTimeSlots() {
+    const dateInput = document.getElementById('journey-date');
+    const timeInput = document.getElementById('journey-time');
+    const resultDiv = document.getElementById('result');
+    
+    if (!dateInput.value) {
+        return;
+    }
+
+    // Clear existing options
+    timeInput.innerHTML = '<option value="">Select time</option>';
+    
+    // Get CSRF token
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    
+    // Fetch available slots from server
+    fetch('get-available-slots/?date=' + dateInput.value, {
+        method: 'GET',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRFToken': csrftoken
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.error) {
+            // Show error in the result div
+            resultDiv.className = 'result_box error';
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = data.error;
+            return;
+        }
+        
+        if (data.available_slots && data.available_slots.length > 0) {
+            data.available_slots.forEach(slot => {
+                const option = document.createElement('option');
+                option.value = slot;
+                option.textContent = slot;
+                timeInput.appendChild(option);
+            });
+        } else {
+            // No available slots
+            const option = document.createElement('option');
+            option.value = "";
+            option.textContent = "No available slots for this date";
+            timeInput.appendChild(option);
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching time slots:', error);
+        // Show error in the result div
+        resultDiv.className = 'result_box error';
+        resultDiv.style.display = 'block';
+        resultDiv.textContent = 'Error loading available time slots. Please try again.';
+    });
+}
+    document.addEventListener('DOMContentLoaded', function() {
+    const dateInput = document.getElementById('journey-date');
+    dateInput.addEventListener('change', updateAvailableTimeSlots);
+    
+    // Convert time input to select
+    const timeInput = document.getElementById('journey-time');
+    const timeSelect = document.createElement('select');
+    timeSelect.id = 'journey-time';
+    timeSelect.className = timeInput.className;
+    timeSelect.required = true;
+    timeInput.parentNode.replaceChild(timeSelect, timeInput);
+});
+    let autocompleteFrom, autocompleteTo;
+let map;
+
+function initAutocomplete() {
+    // Initialize autocomplete for 'from' input
+    autocompleteFrom = new google.maps.places.Autocomplete(
+        document.getElementById('from'),
+        { types: ['geocode'] }
+    );
+
+    // Initialize autocomplete for 'to' input
+    autocompleteTo = new google.maps.places.Autocomplete(
+        document.getElementById('to'),
+        { types: ['geocode'] }
+    );
+
+    // Add place_changed listeners
+    autocompleteFrom.addListener('place_changed', onPlaceChanged);
+    autocompleteTo.addListener('place_changed', onPlaceChanged);
+}
+
+function onPlaceChanged() {
+    // Clear previous results when a new place is selected
+    document.getElementById('result').style.display = 'none';
+    document.getElementById('calculate-btn-container').style.display = 'block';
+    document.getElementById('book-btn-container').style.display = 'none';
+}
+
+function calculateDistance() {
+    const fromInput = document.getElementById('from');
+    const toInput = document.getElementById('to');
+    const date = document.getElementById('journey-date').value;
+    const time = document.getElementById('journey-time').value;
+    const resultDiv = document.getElementById('result');
+    const loader = document.getElementById('loader');
+    const calculateBtnContainer = document.getElementById('calculate-btn-container');
+    const bookBtnContainer = document.getElementById('book-btn-container');
+
+    // Form validation
+    if (!fromInput.value || !toInput.value || !date || !time) {
+        resultDiv.className = 'result_box error';
+        resultDiv.style.display = 'block';
+        resultDiv.textContent = 'Please fill in all fields';
+        return;
+    }
+
+    // Show loader, hide result
+    loader.style.display = 'block';
+    resultDiv.style.display = 'none';
+    calculateBtnContainer.style.display = 'none';
+
+    const service = new google.maps.DistanceMatrixService();
+    
+    service.getDistanceMatrix(
+        {
+            origins: [fromInput.value],
+            destinations: [toInput.value],
+            travelMode: google.maps.TravelMode.DRIVING,
+            unitSystem: google.maps.UnitSystem.METRIC,
+        },
+        (response, status) => {
+            // Hide loader
+            loader.style.display = 'none';
+            
+            if (status === 'OK') {
+                try {
+                    const result = response.rows[0].elements[0];
+                    if (result.status === 'OK') {
+                        // Store duration for booking
+                        window.rideDuration = result.duration.text;
+                        
+                        resultDiv.className = 'result_box success';
+                        resultDiv.style.display = 'block';
+                        resultDiv.innerHTML = `
+                            <strong>From:</strong> ${response.originAddresses[0]}<br>
+                            <strong>To:</strong> ${response.destinationAddresses[0]}<br>
+                            <strong>Distance:</strong> ${result.distance.text}<br>
+                            <strong>Estimated time:</strong> ${result.duration.text}<br>
+                            <strong>Date:</strong> ${date}<br>
+                            <strong>Time:</strong> ${time}
+                        `;
+
+                        calculateBtnContainer.style.display = 'none';
+                        bookBtnContainer.style.display = 'block';
+                    } else {
+                        resultDiv.className = 'result_box error';
+                        resultDiv.style.display = 'block';
+                        resultDiv.textContent = 'Unable to find route';
+                        calculateBtnContainer.style.display = 'block';
+                    }
+                } catch (error) {
+                    resultDiv.className = 'result_box error';
+                    resultDiv.style.display = 'block';
+                    resultDiv.textContent = 'Error processing response';
+                    calculateBtnContainer.style.display = 'block';
+                }
+            } else {
+                resultDiv.className = 'result_box error';
+                resultDiv.style.display = 'block';
+                resultDiv.textContent = 'Error calculating distance';
+                calculateBtnContainer.style.display = 'block';
+            }
+        }
+    );
+}
+// Reset form and buttons when inputs change
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('#distance-form input').forEach(input => {
+        input.addEventListener('change', function() {
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('calculate-btn-container').style.display = 'block';
+            document.getElementById('book-btn-container').style.display = 'none';
+        });
+    });
+});
+    
+// function bookRide() {
+//     const formData = new FormData();
+//     formData.append('from', document.getElementById('from').value);
+//     formData.append('to', document.getElementById('to').value);
+//     formData.append('date', document.getElementById('journey-date').value);
+//     formData.append('time', document.getElementById('journey-time').value);
+//     formData.append('duration', window.rideDuration);
+//     formData.append('csrfmiddlewaretoken', document.querySelector('[name=csrfmiddlewaretoken]').value);
+
+//     fetch('book-ride', {
+//         method: 'POST',
+//         body: formData,
+//         headers: {
+//             'X-Requested-With': 'XMLHttpRequest'
+//         }
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         const resultDiv = document.getElementById('result');
+//         if (data.status === 'success') {
+//             resultDiv.className = 'result_box success';
+//             resultDiv.textContent = 'Ride booked successfully! Redirecting...';
+//             document.getElementById('book-btn-container').style.display = 'none';
+//             setTimeout(() => {
+//                 window.location.href = data.redirect_url;
+//             }, 1500);
+//         } else if (data.status === 'redirect') {
+//             window.location.href = data.url;
+//         } else {
+//             throw new Error(data.message);
+//         }
+//     })
+//     .catch(error => {
+//         const resultDiv = document.getElementById('result');
+//         resultDiv.className = 'result_box error';
+//         resultDiv.textContent = 'Error booking ride: ' + error.message;
+//     });
+// }
+
+// Add event listener for date change
+document.addEventListener('DOMContentLoaded', function() {
+    const dateInput = document.getElementById('journey-date');
+    dateInput.addEventListener('change', updateAvailableTimeSlots);
+    
+    // Convert time input to select
+    const timeInput = document.getElementById('journey-time');
+    const timeSelect = document.createElement('select');
+    timeSelect.id = 'journey-time';
+    timeSelect.className = timeInput.className;
+    timeSelect.required = true;
+    timeInput.parentNode.replaceChild(timeSelect, timeInput);
+});
+
+
+function checkOverlap() {
+    const date = document.getElementById('journey-date').value;
+    const time = document.getElementById('journey-time').value;
+    const duration = window.rideDuration;
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    return fetch(`get-available-slots/?date=${date}&selected_time=${time}&duration=${duration}`, {
+        method: 'GET',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRFToken': csrftoken
+        }
+    })
+    .then(response => response.json());
+}
+
+function bookRide() {
+    // First check for overlaps
+    checkOverlap().then(data => {
+        if (data.overlap) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.className = 'result_box error';
+            resultDiv.innerHTML = `
+                Driver is busy from ${data.busy_start} to ${data.busy_end}.<br>
+                The ride you are trying to book is from ${data.requested_start} to ${data.requested_end}.<br>
+                Please pick another time.
+            `;
+            return;
+        }
+
+        // If no overlap, proceed with booking
+        const formData = new FormData();
+        formData.append('from', document.getElementById('from').value);
+        formData.append('to', document.getElementById('to').value);
+        formData.append('date', document.getElementById('journey-date').value);
+        formData.append('time', document.getElementById('journey-time').value);
+        formData.append('duration', window.rideDuration);
+        formData.append('csrfmiddlewaretoken', document.querySelector('[name=csrfmiddlewaretoken]').value);
+
+        fetch('book-ride', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            const resultDiv = document.getElementById('result');
+            if (data.status === 'success') {
+                resultDiv.className = 'result_box success';
+                resultDiv.textContent = 'Ride booked successfully! Redirecting...';
+                document.getElementById('book-btn-container').style.display = 'none';
+                setTimeout(() => {
+                    window.location.href = data.redirect_url;
+                }, 1500);
+            } else if (data.status === 'redirect') {
+                window.location.href = data.url;
+            } else {
+                throw new Error(data.message);
+            }
+        })
+        .catch(error => {
+            const resultDiv = document.getElementById('result');
+            resultDiv.className = 'result_box error';
+            resultDiv.textContent = 'Error booking ride: ' + error.message;
+        });
+    })
+    .catch(error => {
+        const resultDiv = document.getElementById('result');
+        resultDiv.className = 'result_box error';
+        resultDiv.textContent = 'Error checking availability: ' + error.message;
+    });
+}
+  </script>
+
+  <!-- Load jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Load OwlCarousel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+  <!-- Initialize OwlCarousel -->
+  <script>
+    $(document).ready(function(){
+      $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        dots: true,
+        responsive: {
+          0: { items: 1 },
+          600: { items: 1 },
+          1000: { items: 2 }
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
