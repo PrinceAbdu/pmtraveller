@@ -1,9 +1,11 @@
+#!/bin/bash
 echo "Installing dependencies..."
-pip install -r requirements.txt
+/opt/vercel/python3/bin/python -m pip install -r requirements.txt
 
-echo "Creating static directory if it doesn't exist..."
+echo "Creating staticfiles directory if it doesn't exist..."
 mkdir -p staticfiles
 
 echo "Collecting static files..."
-python manage.py collectstatic --noinput --clear
-echo "Build completed"
+/opt/vercel/python3/bin/python manage.py collectstatic --noinput --clear
+
+echo "Build completed."
