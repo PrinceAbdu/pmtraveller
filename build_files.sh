@@ -2,9 +2,8 @@ echo "Installing dependencies..."
 pip install -r requirements.txt
 
 echo "Creating static directory if it doesn't exist..."
-mkdir -p static
+mkdir -p staticfiles
 
 echo "Collecting static files..."
-python3 manage.py collectstatic --noinput
-
+python manage.py collectstatic --noinput --clear
 echo "Build completed"
