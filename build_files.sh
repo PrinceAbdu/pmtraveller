@@ -1,5 +1,7 @@
 #!/bin/bash
+touch build1_test.txt
 echo "Installing dependencies..."
+touch build_test.txt
 /opt/vercel/python3/bin/python -m pip install -r requirements.txt
 
 echo "Creating staticfiles directory if it doesn't exist..."
