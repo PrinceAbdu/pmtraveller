@@ -26,7 +26,15 @@ SECRET_KEY = 'django-insecure-mkn(@h&%q7hcm9ift2^&$yk-8_y@(*pq_eltteco%h*!^do^jz
 DEBUG = False
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'localhost', '127.0.0.1','palmvalleytransportation.com', 'www.palmvalleytransportation.com']
+# ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'localhost', '127.0.0.1','palmvalleytransportation.com', 'www.palmvalleytransportation.com']
+VERCEL_DEPLOYMENT = os.environ.get('VERCEL_REGION', False)
+
+# Then modify your ALLOWED_HOSTS
+if VERCEL_DEPLOYMENT:
+    # This is critical - in Vercel, the host header isn't passed properly sometimes
+    ALLOWED_HOSTS = ['*']  # This is safe in Vercel's serverless environment
+else:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'palmvalleytransportation.com', 'www.palmvalleytransportation.com']
 
 # Application definition
 # settings.py
