@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-mkn(@h&%q7hcm9ift2^&$yk-8_y@(*pq_eltteco%h*!^do^jz
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
+import os
 # ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'localhost', '127.0.0.1','palmvalleytransportation.com', 'www.palmvalleytransportation.com']
 VERCEL_DEPLOYMENT = os.environ.get('VERCEL_REGION', False)
