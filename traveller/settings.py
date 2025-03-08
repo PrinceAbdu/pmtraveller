@@ -30,11 +30,9 @@ import os
 VERCEL_DEPLOYMENT = os.environ.get('VERCEL_REGION', False)
 
 # Then modify your ALLOWED_HOSTS
-if VERCEL_DEPLOYMENT:
-    # This is critical - in Vercel, the host header isn't passed properly sometimes
-    ALLOWED_HOSTS = ['*']  # This is safe in Vercel's serverless environment
-else:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'palmvalleytransportation.com', 'www.palmvalleytransportation.com']
+# if VERCEL_DEPLOYMENT:
+#     # This is critical - in Vercel, the host header isn't passed properly sometimes
+ALLOWED_HOSTS = ['*']  # This is safe in Vercel's serverless environment
 
 # Application definition
 # settings.py
